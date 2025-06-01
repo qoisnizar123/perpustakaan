@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function user()
     {
-        return view('anggota.user');
+        return view('anggota.index');
     }
 }

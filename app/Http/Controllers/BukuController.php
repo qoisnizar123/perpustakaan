@@ -8,7 +8,7 @@ class BukuController extends Controller
 {
     public function buku()
     {
-        return view('buku.buku');
+        return view('buku.index');
     }
 
     public function tambahbuku()

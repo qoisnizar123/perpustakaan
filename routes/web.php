@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RiwayatpeminjamanController;
+use App\Http\Controllers\peminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,15 @@ use App\Http\Controllers\RiwayatpeminjamanController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'dashboard']);
+Route::get('/', function () {
+    return view('welcome');
+})->middleware('login');
+
+Route::get('/login', [LoginController::class, 'login']);
+Route::get('/register', [LoginController::class, 'register']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 Route::get('/buku', [BukuController::class, 'buku']);
 Route::get('/tambah_buku', [BukuController::class, 'tambahbuku']);
@@ -28,4 +37,4 @@ Route::get('/tambah_kategori', [KategoriController::class, 'tambahkategori']);
 
 Route::get('/user', [UserController::class, 'user']);
 
-Route::get('/riwayat_peminjaman', [RiwayatpeminjamanController::class, 'riwayatpeminjaman']);
+Route::get('/peminjaman', [RiwayatpeminjamanController::class, 'peminjaman']);

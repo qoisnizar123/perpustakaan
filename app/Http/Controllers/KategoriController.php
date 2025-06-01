@@ -8,7 +8,7 @@ class KategoriController extends Controller
 {
     public function kategori()
     {
-        return view('kategori.kategori');
+        return view('kategori.index');
     }
 
     public function tambahkategori()

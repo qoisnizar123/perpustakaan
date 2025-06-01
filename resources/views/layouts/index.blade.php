@@ -12,6 +12,7 @@
 
 <body>
     <div class="main d-flex flex-column justify-content-between min-vh-100">
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Perpustakaan</a>
@@ -21,12 +22,17 @@
         <div class="body-content flex-grow-1">
             <div class="row g-0 h-100">
                 <!-- Sidebar -->
-                <div class="sidebar col-12 col-lg-2 p-3 d-flex flex-column">
-                    <a href="/" @if (request()->route()->uri == '/') class="active" @endif>Beranda</a>
-                    <a href="buku" @if (request()->route()->uri == 'buku') class="active" @endif>Buku</a>
-                    <a href="kategori" @if (request()->route()->uri == 'kategori') class="active" @endif>Kategori</a>
-                    <a href="user" @if (request()->route()->uri == 'user') class="active" @endif>Anggota</a>
-                    <a href="riwayat_peminjaman" @if (request()->route()->uri == 'riwayat_peminjaman') class="active" @endif>Peminjaman</a>
+                <div class="sidebar col-12 col-lg-2 p-3 d-flex flex-column collapse d-lg-block show" id="sidebarMenu">
+                    <a href="{{ url('dashboard') }}"
+                        class="{{ request()->route()->uri == 'dashboard' ? 'active' : '' }}">Beranda</a>
+                    <a href="{{ url('buku') }}"
+                        class="{{ request()->route()->uri == 'buku' ? 'active' : '' }}">Buku</a>
+                    <a href="{{ url('kategori') }}"
+                        class="{{ request()->route()->uri == 'kategori' ? 'active' : '' }}">Kategori</a>
+                    <a href="{{ url('user') }}"
+                        class="{{ request()->route()->uri == 'user' ? 'active' : '' }}">Anggota</a>
+                    <a href="{{ url('peminjaman') }}"
+                        class="{{ request()->route()->uri == 'peminjaman' ? 'active' : '' }}">Peminjaman</a>
                 </div>
 
                 <!-- Main Content -->
@@ -37,7 +43,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>
