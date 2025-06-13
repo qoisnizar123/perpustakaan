@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\{Buku, Kategori, User};
 
 class DashboardController extends Controller
 {
-    public function dashboard()
+    public function index()
     {
-        return view('home');
+        return view('dashboard.dashboard', [
+            'buku' => Buku::count(),
+            'kategori' => Kategori::count(),
+            'user' => User::count()
+        ]);
     }
 }
